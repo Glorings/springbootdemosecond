@@ -1,16 +1,15 @@
 package com.ald.ecanew.springbootdemosecond.controller;
 
-import jdk.management.resource.internal.inst.SocketOutputStreamRMHooks;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
-import javax.validation.Valid;
-
-@RestController
-public class HelloWorldController{
+@Controller
+@RequestMapping("/TemplateTest")
+public class HelloWorldTemplateController {
 
     @Value("${name}")
     private String name;
