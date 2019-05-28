@@ -1,5 +1,6 @@
 package com.ald.ecanew.springbootdemosecond.controller;
 
+import com.alibaba.fastjson.JSON;
 import jdk.management.resource.internal.inst.SocketOutputStreamRMHooks;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -16,7 +17,10 @@ public class HelloWorldController{
     private String name;
     @Autowired
     private  PersonConfig personConfig;
-
+    @Autowired
+    PersonBatchConfig personBatchConfig;
+    @Autowired
+    AnimalBatchConfig animalBatchConfig;
     @GetMapping("/hello")
     public String sayHello() {
         System.out.println("111");
@@ -31,9 +35,8 @@ public class HelloWorldController{
 
     @GetMapping("/hello3")
     public String sayHello3() {
-        System.out.println(personConfig.getName());
-        System.out.println(personConfig.getGender());
-        return personConfig.getName();
+        System.out.println(animalBatchConfig.getName());
+        return JSON.toJSONString(animalBatchConfig);
     }
 
     @GetMapping("/hello4")

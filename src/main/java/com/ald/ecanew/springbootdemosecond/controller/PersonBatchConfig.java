@@ -9,6 +9,7 @@ public class PersonBatchConfig {
 
    private String name;
    private String gender;
+    private String nation;
 
     public String getName() {
         return name;
@@ -24,5 +25,13 @@ public class PersonBatchConfig {
 
     public void setGender(String gender) {
         this.gender = gender;
+    }
+
+    public String getNation() {
+        return nation;
+    }
+
+    public void setNation(String nation) {
+        this.nation = nation;
     }
 }
