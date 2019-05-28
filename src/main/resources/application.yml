@@ -5,3 +5,8 @@ gender: male
 person:
   name: Gloring
   gender: male
+spring:
+  mvc:
+    view:
+      prefix: /WEB-INF/
+      suffix: .jsp
