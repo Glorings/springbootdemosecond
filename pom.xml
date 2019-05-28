@@ -47,9 +47,14 @@
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
         <!--thymeleaf end-->
+
+        <!--freemarker start-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-freemarker</artifactId>
+        </dependency>
+        <!--freemarker end-->
     </dependencies>
-
-
 
     <build>
         <plugins>
