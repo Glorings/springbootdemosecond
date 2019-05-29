@@ -8,7 +8,7 @@
         id,gmt_create,gmt_modified,user_name,real_name,age
     </sql>
 
-	<select id="getById" resultType="com.ald.ecanew.springbootdemosecond.dal.domain.PersonDo">
+	<select id="getById" resultType="personDo">
         SELECT
         <include refid="queryFields" />
         FROM person

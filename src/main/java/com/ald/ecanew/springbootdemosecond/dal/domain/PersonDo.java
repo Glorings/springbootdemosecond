@@ -1,8 +1,10 @@
 package com.ald.ecanew.springbootdemosecond.dal.domain;
 
+import org.apache.ibatis.type.Alias;
+
 import java.util.Date;
 
-
+@Alias("personDo")
  public class PersonDo extends BaseDo {
     /**
      * 主键Id
