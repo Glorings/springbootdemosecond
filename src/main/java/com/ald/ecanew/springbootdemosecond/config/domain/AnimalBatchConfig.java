@@ -1,4 +1,4 @@
-package com.ald.ecanew.springbootdemosecond.controller;
+package com.ald.ecanew.springbootdemosecond.config.domain;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;

@@ -1,18 +1,15 @@
-package com.ald.ecanew.springbootdemosecond.controller;
+package com.ald.ecanew.springbootdemosecond.config.domain;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 @Component
-public class PersonConfig {
+@ConfigurationProperties(prefix = "person")
+public class PersonBatchConfig {
 
-    @Value("${person.name}")
-    private String name;
-    @Value("${person.gender}")
-    private String gender;
+   private String name;
+   private String gender;
+    private String nation;
 
     public String getName() {
         return name;
@@ -28,5 +25,13 @@ public class PersonConfig {
 
     public void setGender(String gender) {
         this.gender = gender;
+    }
+
+    public String getNation() {
+        return nation;
+    }
+
+    public void setNation(String nation) {
+        this.nation = nation;
     }
 }

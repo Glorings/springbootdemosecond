@@ -1,5 +1,6 @@
 package com.ald.ecanew.springbootdemosecond.controller;
 
+import com.ald.ecanew.springbootdemosecond.config.domain.PersonConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -14,7 +15,7 @@ public class HelloWorldTemplateController {
     @Value("${name}")
     private String name;
     @Autowired
-    private  PersonConfig personConfig;
+    private PersonConfig personConfig;
 
     @GetMapping("/hello")
     public String sayHello() {

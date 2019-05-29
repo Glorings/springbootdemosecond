@@ -1,26 +1,38 @@
 package com.ald.ecanew.springbootdemosecond.controller;
 
+import com.ald.ecanew.springbootdemosecond.config.domain.AnimalBatchConfig;
+import com.ald.ecanew.springbootdemosecond.config.domain.PersonBatchConfig;
+import com.ald.ecanew.springbootdemosecond.config.domain.PersonConfig;
 import com.alibaba.fastjson.JSON;
-import jdk.management.resource.internal.inst.SocketOutputStreamRMHooks;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
+import javax.sql.DataSource;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 @RestController
 public class HelloWorldController{
 
+    private Logger logger = LoggerFactory.getLogger(HelloWorldController.class);
+
     @Value("${name}")
     private String name;
     @Autowired
-    private  PersonConfig personConfig;
+    private PersonConfig personConfig;
     @Autowired
     PersonBatchConfig personBatchConfig;
     @Autowired
     AnimalBatchConfig animalBatchConfig;
+
+    @Autowired
+    private DataSource dataSource;
+
     @GetMapping("/hello")
     public String sayHello() {
         System.out.println("111");
@@ -46,4 +58,37 @@ public class HelloWorldController{
         model.put("msg", "TTTTT");
         return "index";
     }
+
+    @GetMapping("/hello5")
+    private String testMysql() {
+        int result = 0;
+        Connection conn = null;
+        if(dataSource==null) {
+            logger.error("testMysql dataSource is null");
+        }
+        try {
+            conn = dataSource.getConnection();
+            ResultSet resultSet = conn.prepareStatement("select count(1) from test2").executeQuery();
+            if(resultSet.next()) {
+                result = resultSet.getInt(1);
+            }
+            if(result>0) {
+                return result+"";
+            }
+        } catch (SQLException e) {
+            logger.error("validMysqlInfo conn exec error",e);
+        }finally {
+            if(conn!=null) {
+                try {
+                    if(!conn.isClosed()) {
+                        conn.close();
+                    }
+                } catch (Exception e) {
+                    logger.error("validMysqlInfo conn close error",e);
+                }
+            }
+        }
+        return null;
+    }
+
 }
