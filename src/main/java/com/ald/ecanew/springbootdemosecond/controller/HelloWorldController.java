@@ -3,10 +3,14 @@ package com.ald.ecanew.springbootdemosecond.controller;
 import com.ald.ecanew.springbootdemosecond.config.domain.AnimalBatchConfig;
 import com.ald.ecanew.springbootdemosecond.config.domain.PersonBatchConfig;
 import com.ald.ecanew.springbootdemosecond.config.domain.PersonConfig;
+import com.ald.ecanew.springbootdemosecond.dal.dao.PersonDao;
+import com.ald.ecanew.springbootdemosecond.dal.domain.PersonDo;
 import com.alibaba.fastjson.JSON;
+import org.apache.commons.dbcp2.BasicDataSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
@@ -31,7 +35,10 @@ public class HelloWorldController{
     AnimalBatchConfig animalBatchConfig;
 
     @Autowired
-    private DataSource dataSource;
+    BasicDataSource dataSource;
+
+    @Autowired
+    PersonDao personDao;
 
     @GetMapping("/hello")
     public String sayHello() {
@@ -91,4 +98,9 @@ public class HelloWorldController{
         return null;
     }
 
+    @GetMapping("/hello6")
+    public String testMybatis() {
+        PersonDo personDo = personDao.getById(1L);
+        return JSON.toJSONString(personDo);
+    }
 }
