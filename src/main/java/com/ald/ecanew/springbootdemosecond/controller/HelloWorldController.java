@@ -12,9 +12,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
 import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -37,8 +39,11 @@ public class HelloWorldController{
     @Autowired
     BasicDataSource dataSource;
 
-    @Autowired
+    @Resource
     PersonDao personDao;
+
+    @Autowired
+    RedisTemplate redisTemplate;
 
     @GetMapping("/hello")
     public String sayHello() {
@@ -102,5 +107,12 @@ public class HelloWorldController{
     public String testMybatis() {
         PersonDo personDo = personDao.getById(1L);
         return JSON.toJSONString(personDo);
+    }
+
+    @GetMapping("/hello7")
+    public String testRedis() {
+        redisTemplate.opsForValue().set("Name","Glorings");
+        Object name = redisTemplate.opsForValue().get("Name");
+        return JSON.toJSONString(name);
     }
 }
