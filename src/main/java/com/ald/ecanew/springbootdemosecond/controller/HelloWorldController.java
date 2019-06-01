@@ -13,8 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
-import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.data.redis.core.*;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,6 +22,10 @@ import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @RestController
 public class HelloWorldController{
@@ -117,8 +120,57 @@ public class HelloWorldController{
 
     @GetMapping("/hello7")
     public String testRedis() {
+        //String
         redisTemplate.opsForValue().set("Name","Glorings");
         Object name = redisTemplate.opsForValue().get("Name");
-        return JSON.toJSONString(name);
+        stringRedisTemplate.opsForValue().set("gender","male");
+        Object gender = stringRedisTemplate.opsForValue().get("gender");
+        Long increment = redisTemplate.opsForValue().increment("increment", 2);
+        //redisTemplate.opsForValue().set("decrement","50");
+        Long decrement = redisTemplate.opsForValue().decrement("decrement", 1);
+
+        //Hash
+        HashMap<String, String> map = new HashMap<String,String>();
+        map.put("filed1", "value1");
+        map.put("filed2", "value2");
+        stringRedisTemplate.opsForHash().putAll("hash",map);
+        stringRedisTemplate.opsForHash().put("hash","filed3","value3");
+        BoundHashOperations<String, Object, Object> boundHashOps = stringRedisTemplate.boundHashOps("hash");
+        boundHashOps.delete("filed1");
+        boundHashOps.put("filed4", "value4");
+        boundHashOps.put("filed5", "value5");
+
+        //List
+        stringRedisTemplate.opsForList().leftPushAll("list1","v1","v2","v3","v4","v5");
+        stringRedisTemplate.opsForList().rightPushAll("list2","v6","v7","v8","v9","v10");
+        BoundListOperations<String, String> listOperations = stringRedisTemplate.boundListOps("list2");
+        listOperations.rightPop();
+        System.out.println(listOperations.index(1));
+        listOperations.leftPush("v30");
+        System.out.println( listOperations.size());
+        List<String> range = listOperations.range(0, listOperations.size() - 2);
+
+        //set
+        //stringRedisTemplate.opsForSet().add("set1", "v1", "v2", "v3", "v1", "v4", "v5");
+        //stringRedisTemplate.opsForSet().add("set2", "v2", "v4", "v5");
+        BoundSetOperations<String, String> boundSetOps = stringRedisTemplate.boundSetOps("set1");
+        boundSetOps.remove("v2");
+        System.out.println(boundSetOps.members());
+        System.out.println(boundSetOps.intersect("set2"));
+
+        //zset
+        Set<ZSetOperations.TypedTuple<String>> set = new HashSet<>();
+        set.add(new DefaultTypedTuple<String>("v1", 1d));
+        set.add(new DefaultTypedTuple<String>("v2", 3d));
+        set.add(new DefaultTypedTuple<String>("v1", 2d));
+        set.add(new DefaultTypedTuple<String>("v3", 5d));
+        set.add(new DefaultTypedTuple<String>("v4", 4d));
+        //stringRedisTemplate.opsForZSet().add("zset2", set);
+        BoundZSetOperations<String, String> zSetOperations = stringRedisTemplate.boundZSetOps("zset2");
+        zSetOperations.add("v5",20);
+        System.out.println(zSetOperations.range(2, 3));
+        System.out.println(zSetOperations.rangeByScore(3, 50));
+        System.out.println(zSetOperations.score("v5"));
+        return JSON.toJSONString(increment);
     }
 }
