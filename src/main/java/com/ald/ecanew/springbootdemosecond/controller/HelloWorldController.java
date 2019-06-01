@@ -10,15 +10,15 @@ import org.apache.commons.dbcp2.BasicDataSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.dao.DataAccessException;
+import org.springframework.data.redis.connection.RedisConnection;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.*;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -172,5 +172,19 @@ public class HelloWorldController{
         System.out.println(zSetOperations.rangeByScore(3, 50));
         System.out.println(zSetOperations.score("v5"));
         return JSON.toJSONString(increment);
+    }
+
+    @GetMapping("/hello8")
+    public void testRedisTransation() {
+        redisTemplate.opsForValue().set("key1", "value1");
+        Object execute = redisTemplate.execute(new RedisCallback() {
+            @Override
+            public Object doInRedis(RedisConnection redisConnection) throws DataAccessException {
+                redisTemplate.watch("key1");
+                redisTemplate.multi();
+                redisTemplate.opsForValue().set("key2", "value2");
+                return redisTemplate.exec();
+            }
+        });
     }
 }
