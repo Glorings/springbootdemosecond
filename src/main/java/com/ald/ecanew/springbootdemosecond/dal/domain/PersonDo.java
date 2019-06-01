@@ -2,10 +2,11 @@ package com.ald.ecanew.springbootdemosecond.dal.domain;
 
 import org.apache.ibatis.type.Alias;
 
+import java.io.Serializable;
 import java.util.Date;
 
 @Alias("personDo")
- public class PersonDo extends BaseDo {
+ public class PersonDo extends BaseDo implements Serializable {
     /**
      * 主键Id
      */

@@ -16,5 +16,12 @@
         LIMIT 0,1
     </select>
 
-    
+    <select id="getByUserName" resultType="personDo">
+        SELECT
+        <include refid="queryFields" />
+        FROM person
+        WHERE is_delete = 0 AND user_name=#{userName}
+        LIMIT 0,1
+    </select>
+
 </mapper>

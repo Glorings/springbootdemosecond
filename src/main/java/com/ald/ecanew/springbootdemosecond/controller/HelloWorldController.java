@@ -1,5 +1,6 @@
 package com.ald.ecanew.springbootdemosecond.controller;
 
+import com.ald.ecanew.springbootdemosecond.biz.PersonService;
 import com.ald.ecanew.springbootdemosecond.config.domain.AnimalBatchConfig;
 import com.ald.ecanew.springbootdemosecond.config.domain.PersonBatchConfig;
 import com.ald.ecanew.springbootdemosecond.config.domain.PersonConfig;
@@ -43,6 +44,9 @@ public class HelloWorldController{
 
     @Autowired
     BasicDataSource dataSource;
+
+    @Autowired
+    PersonService personService;
 
     @Resource
     PersonDao personDao;
@@ -192,5 +196,11 @@ public class HelloWorldController{
     @GetMapping("/hello9")
     public void testRedisTopic() {
         redisTemplate.convertAndSend("topic","MSGKKKTTT");
+        System.out.println("'aaa'+'bb'");
+    }
+
+    @GetMapping("/hello10")
+    public String testRedisCache() {
+        return JSON.toJSONString(personService.getByUserName("18668465735"));
     }
 }

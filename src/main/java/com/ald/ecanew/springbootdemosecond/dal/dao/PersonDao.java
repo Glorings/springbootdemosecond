@@ -2,6 +2,7 @@ package com.ald.ecanew.springbootdemosecond.dal.dao;
 
 import com.ald.ecanew.springbootdemosecond.dal.domain.PersonDo;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -15,4 +16,5 @@ import org.springframework.stereotype.Repository;
 @Mapper
 public interface PersonDao extends BaseDao<PersonDo, Long> {
 
+    PersonDo getByUserName(@Param("userName") String userName);
 }
