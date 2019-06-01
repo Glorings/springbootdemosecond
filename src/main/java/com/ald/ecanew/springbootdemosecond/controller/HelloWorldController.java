@@ -188,4 +188,9 @@ public class HelloWorldController{
         });*/
         System.out.println("1111");
     }
+
+    @GetMapping("/hello9")
+    public void testRedisTopic() {
+        redisTemplate.convertAndSend("topic","MSGKKKTTT");
+    }
 }
