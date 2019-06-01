@@ -176,15 +176,16 @@ public class HelloWorldController{
 
     @GetMapping("/hello8")
     public void testRedisTransation() {
-        redisTemplate.opsForValue().set("key1", "value1");
-        Object execute = redisTemplate.execute(new RedisCallback() {
-            @Override
-            public Object doInRedis(RedisConnection redisConnection) throws DataAccessException {
-                redisTemplate.watch("key1");
-                redisTemplate.multi();
-                redisTemplate.opsForValue().set("key2", "value2");
-                return redisTemplate.exec();
-            }
-        });
+       /* redisTemplate.opsForValue().set("key1", "value1");
+        List result = (List)redisTemplate.execute((RedisOperations redisOperations) -> {
+            redisOperations.watch("key1");
+            redisOperations.multi();
+            redisOperations.opsForValue().set("key2", "value2");
+            //int a = 1 / 0;
+            //redisOperations.opsForValue().increment("key1", 22);
+            redisOperations.opsForValue().set("key3", "value3");
+            return redisOperations.exec();
+        });*/
+        System.out.println("1111");
     }
 }
