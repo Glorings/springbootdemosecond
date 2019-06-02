@@ -12,6 +12,7 @@ import com.ald.ecanew.springbootdemosecond.dal.domain.UserDo;
 import com.ald.ecanew.springbootdemosecond.dal.domain.UserJpaDo;
 import com.alibaba.fastjson.JSON;
 import org.apache.commons.dbcp2.BasicDataSource;
+import org.apache.ibatis.annotations.Param;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -245,7 +246,16 @@ public class HelloWorldController{
        // return JSON.toJSONString(userJpaDao.count());
         userService.unset();
         return null;
+    }
 
+    @GetMapping("/hello13")
+    public String testConverter(UserDo user) {
+        return JSON.toJSONString(user);
+    }
+
+    @GetMapping("/hello14")
+    public String testConverterGeneric(List<String> userName) {
+        return JSON.toJSONString(userName);
     }
 
 }
