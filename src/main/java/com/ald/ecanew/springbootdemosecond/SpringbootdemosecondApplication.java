@@ -9,6 +9,7 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.listener.ChannelTopic;
@@ -18,10 +19,12 @@ import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
 
 import javax.annotation.PostConstruct;
+import javax.persistence.NamedEntityGraph;
 
 @SpringBootApplication
 @PropertySource(value = "classpath:jdbc.properties")
 @EnableCaching
+@EnableMongoRepositories(basePackages = "com.ald.ecanew.springbootdemosecond.dal.dao")
 public class SpringbootdemosecondApplication {
 
     @Autowired

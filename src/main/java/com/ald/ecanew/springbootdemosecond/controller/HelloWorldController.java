@@ -6,8 +6,10 @@ import com.ald.ecanew.springbootdemosecond.config.domain.AnimalBatchConfig;
 import com.ald.ecanew.springbootdemosecond.config.domain.PersonBatchConfig;
 import com.ald.ecanew.springbootdemosecond.config.domain.PersonConfig;
 import com.ald.ecanew.springbootdemosecond.dal.dao.PersonDao;
+import com.ald.ecanew.springbootdemosecond.dal.dao.UserJpaDao;
 import com.ald.ecanew.springbootdemosecond.dal.domain.PersonDo;
 import com.ald.ecanew.springbootdemosecond.dal.domain.UserDo;
+import com.ald.ecanew.springbootdemosecond.dal.domain.UserJpaDo;
 import com.alibaba.fastjson.JSON;
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.slf4j.Logger;
@@ -62,6 +64,9 @@ public class HelloWorldController{
 
     @Autowired
     UserService userService;
+
+    @Autowired
+    UserJpaDao userJpaDao;
 
     @GetMapping("/hello")
     public String sayHello() {
@@ -211,14 +216,36 @@ public class HelloWorldController{
 
     @GetMapping("/hello11")
     public String testMongo() {
-        //return JSON.toJSONString(userService.findUser());
-        UserDo userDo = new UserDo();
+        return JSON.toJSONString(userService.findUser());
+     /*   UserDo userDo = new UserDo();
         userDo.setMobile("TTTT");
-        userDo.setBirdLocation("shanghai");
+        userDo.setBirdLocation("shanghai");*/
         //return JSON.toJSONString(userService.save(userDo));
         //return JSON.toJSONString(userService.getById("5cc29b2b45c7a68b8b89c3aa"));
-        userService.update();
+        //userService.update();
+        //return null;
+
+    }
+    @GetMapping("/hello12")
+    public String testMongoJpa() {
+        //return  JSON.toJSONString(userJpaDao.findByMobile("PPP"));
+        //return JSON.toJSONString(userJpaDao.findById("5cc556dff0a45d6724728474"));
+        //return JSON.toJSONString(userJpaDao.findAll());
+        //return JSON.toJSONString(userJpaDao.findByMobileOrderByIdDesc("PPP"));
+
+       /* UserJpaDo userJpaDo = new UserJpaDo();
+        userJpaDo.setAge("20");
+        userJpaDo.setUsername("EEEE");
+        userJpaDo.setMobile("18668465736s");
+        return JSON.toJSONString(userJpaDao.save(userJpaDo));*/
+
+
+        //return JSON.toJSONString(userService.queryAllByPage(2,3));
+       //return JSON.toJSONString(userJpaDao.count());
+       // return JSON.toJSONString(userJpaDao.count());
+        userService.unset();
         return null;
 
     }
+
 }
