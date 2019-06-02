@@ -7,10 +7,8 @@ import com.ald.ecanew.springbootdemosecond.config.domain.PersonBatchConfig;
 import com.ald.ecanew.springbootdemosecond.config.domain.PersonConfig;
 import com.ald.ecanew.springbootdemosecond.dal.dao.PersonDao;
 import com.ald.ecanew.springbootdemosecond.dal.dao.UserJpaDao;
-import com.ald.ecanew.springbootdemosecond.dal.domain.PersonDo;
-import com.ald.ecanew.springbootdemosecond.dal.domain.UserDo;
-import com.ald.ecanew.springbootdemosecond.dal.domain.UserJpaDo;
-import com.ald.ecanew.springbootdemosecond.dal.domain.ValidatorDo;
+import com.ald.ecanew.springbootdemosecond.dal.domain.*;
+import com.ald.ecanew.springbootdemosecond.validator.MyValidator;
 import com.alibaba.fastjson.JSON;
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.apache.ibatis.annotations.Param;
@@ -23,6 +21,8 @@ import org.springframework.data.redis.connection.RedisConnection;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.*;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.Errors;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -268,4 +268,14 @@ public class HelloWorldController{
         return JSON.toJSONString(validatorDo1);
     }
 
+    @GetMapping("/hello16")
+    public String testMyValidator(@Valid MyValidatorDo validatorDo, Errors error) {
+        System.out.println(error);
+        return JSON.toJSONString(validatorDo);
+    }
+
+    @InitBinder
+    public void intBinder(WebDataBinder webDataBinder) {
+        webDataBinder.setValidator(new MyValidator());
+    }
 }
