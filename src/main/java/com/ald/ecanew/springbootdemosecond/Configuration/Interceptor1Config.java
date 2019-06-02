@@ -18,12 +18,11 @@ public class Interceptor1Config implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        InterceptorRegistration i = registry.addInterceptor(new Interceptor1());
+      /*  InterceptorRegistration i = registry.addInterceptor(new Interceptor1());
         i.addPathPatterns("/**").excludePathPatterns("/hello2");
         InterceptorRegistration i3 = registry.addInterceptor(new Interceptor3());
         i3.addPathPatterns("/**").excludePathPatterns("/hello2");
         InterceptorRegistration i2 = registry.addInterceptor(new Interceptor2());
-        i2.addPathPatterns("/**").excludePathPatterns("/hello2");
-
+        i2.addPathPatterns("/**").excludePathPatterns("/hello2");*/
     }
 }

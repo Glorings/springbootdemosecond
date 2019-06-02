@@ -23,6 +23,8 @@ public class UserDo {
 
     public String  favoties;
 
+    public String  msg;
+
     public String getId() {
         return id;
     }
@@ -69,5 +71,13 @@ public class UserDo {
 
     public void setFavoties(String favoties) {
         this.favoties = favoties;
+    }
+
+    public String getMsg() {
+        return msg;
+    }
+
+    public void setMsg(String msg) {
+        this.msg = msg;
     }
 }

@@ -1,5 +1,5 @@
 <html>
 <body>
-<h2>Freemark! ${msg}</h2>
+<h2>viewTest! ${msg}</h2>
 </body>
 </html>
