@@ -10,6 +10,7 @@ import com.ald.ecanew.springbootdemosecond.dal.dao.UserJpaDao;
 import com.ald.ecanew.springbootdemosecond.dal.domain.PersonDo;
 import com.ald.ecanew.springbootdemosecond.dal.domain.UserDo;
 import com.ald.ecanew.springbootdemosecond.dal.domain.UserJpaDo;
+import com.ald.ecanew.springbootdemosecond.dal.domain.ValidatorDo;
 import com.alibaba.fastjson.JSON;
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.apache.ibatis.annotations.Param;
@@ -25,6 +26,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.validation.Valid;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -256,6 +258,14 @@ public class HelloWorldController{
     @GetMapping("/hello14")
     public String testConverterGeneric(List<String> userName) {
         return JSON.toJSONString(userName);
+    }
+
+    @GetMapping("/hello15")
+    public String testValidator(@Valid  ValidatorDo validatorDo) {
+
+        ValidatorDo validatorDo1 = new ValidatorDo();
+        validatorDo1.setAge(30);
+        return JSON.toJSONString(validatorDo1);
     }
 
 }
