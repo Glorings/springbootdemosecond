@@ -123,7 +123,7 @@
         <!--mongodb end-->
 
         <!--pdf start-->
-        <dependency>
+        <!--<dependency>
             <groupId>com.itextpdf</groupId>
             <artifactId>itextpdf</artifactId>
             <version>5.5.10</version>
@@ -132,7 +132,7 @@
             <groupId>org.xhtmlrenderer</groupId>
             <artifactId>core-renderer</artifactId>
             <version>R8</version>
-        </dependency>
+        </dependency>-->
         <!--pdf end-->
 
         <!--spring security start-->

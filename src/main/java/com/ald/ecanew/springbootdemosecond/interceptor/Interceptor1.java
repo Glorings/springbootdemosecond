@@ -1,8 +1,7 @@
 package com.ald.ecanew.springbootdemosecond.interceptor;
 
 import com.ald.ecanew.springbootdemosecond.biz.PdfExportService;
-import com.lowagie.text.Document;
-import com.lowagie.text.pdf.PdfWriter;
+
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
