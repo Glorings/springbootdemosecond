@@ -135,6 +135,12 @@
         </dependency>
         <!--pdf end-->
 
+        <!--spring security start-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+        <!--spring security end-->
     </dependencies>
 
     <build>

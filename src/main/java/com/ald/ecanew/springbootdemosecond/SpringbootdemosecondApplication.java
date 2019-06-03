@@ -17,6 +17,7 @@ import org.springframework.data.redis.listener.RedisMessageListenerContainer;
 import org.springframework.data.redis.listener.Topic;
 import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 
 import javax.annotation.PostConstruct;
 import javax.persistence.NamedEntityGraph;
@@ -25,6 +26,7 @@ import javax.persistence.NamedEntityGraph;
 @PropertySource(value = "classpath:jdbc.properties")
 @EnableCaching
 @EnableMongoRepositories(basePackages = "com.ald.ecanew.springbootdemosecond.dal.dao")
+//@EnableWebSecurity
 public class SpringbootdemosecondApplication {
 
     @Autowired
