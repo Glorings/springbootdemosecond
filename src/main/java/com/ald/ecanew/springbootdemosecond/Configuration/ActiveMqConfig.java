@@ -19,12 +19,12 @@ public class ActiveMqConfig {
 
     @Bean
     public Queue queue() {
-        return new ActiveMQQueue("sample.queue");
+        return new ActiveMQQueue("sample.queue2");
     }
 
     @Bean
     public Topic topic() {
-        return new ActiveMQTopic("sample.topic");
+        return new ActiveMQTopic("sample.topic2");
     }
 
 }

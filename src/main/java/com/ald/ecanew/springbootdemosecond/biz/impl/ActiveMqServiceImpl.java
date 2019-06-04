@@ -31,11 +31,11 @@ public class ActiveMqServiceImpl implements ActiveMqService {
     @Override
     public void sendMsg(PersonDo personDo) {
         System.out.println("CCCCCCC");
-        jmsTemplate.convertAndSend("myDestination",personDo);
+        jmsTemplate.convertAndSend("myDestination3",personDo);
     }
 
     @Override
-    @JmsListener(destination = "myDestination")
+    @JmsListener(destination = "myDestination3")
     public void receiveMsg(PersonDo personDo) {
         System.out.println("DDDDDD");
         System.out.println(JSON.toJSONString(personDo));

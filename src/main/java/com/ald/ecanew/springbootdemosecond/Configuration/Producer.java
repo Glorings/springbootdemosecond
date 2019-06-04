@@ -22,7 +22,7 @@ public class Producer {
     @Autowired
     private Topic topic;
 
-    //@Scheduled(cron = "0/5 * * * * ?")
+    @Scheduled(cron = "0/5 * * * * ?")
     public void send() {
         //发送队列消息
         this.jmsMessagingTemplate.convertAndSend(this.queue, "生产者辛苦生产的点对点消息成果");
