@@ -41,6 +41,7 @@ public class SpringbootdemosecondApplication {
 
         SpringApplication.run(SpringbootdemosecondApplication.class, args);
         System.out.println("TTTTTTTTT");
+        System.out.println("YYYY");
     }
 
     @PostConstruct
