@@ -38,7 +38,9 @@ public class SpringbootdemosecondApplication {
     @Autowired
     RedisMsgListener redisMsgListener;
     public static void main(String[] args) {
+
         SpringApplication.run(SpringbootdemosecondApplication.class, args);
+        System.out.println("TTTTTTTTT");
     }
 
     @PostConstruct
