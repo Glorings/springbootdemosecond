@@ -49,6 +49,8 @@ public class SpringbootdemosecondApplication {
         redisTemplate.setHashKeySerializer(stringSerializer);
         redisTemplate.setHashValueSerializer(stringSerializer);
 
+
+
     }
 
     @Bean
