@@ -1,3 +1,4 @@
+/*
 package com.ald.ecanew.springbootdemosecond.Configuration;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,4 +29,4 @@ public class Consumer {
     public void receiveSub2(String text) {
         System.out.println("消费者：Consumer2="+text);
     }
-}
+}*/

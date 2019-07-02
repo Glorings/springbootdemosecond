@@ -1,3 +1,4 @@
+/*
 package com.ald.ecanew.springbootdemosecond.biz.impl;
 
 import com.ald.ecanew.springbootdemosecond.biz.ActiveMqService;
@@ -41,3 +42,4 @@ public class ActiveMqServiceImpl implements ActiveMqService {
         System.out.println(JSON.toJSONString(personDo));
     }
 }
+*/

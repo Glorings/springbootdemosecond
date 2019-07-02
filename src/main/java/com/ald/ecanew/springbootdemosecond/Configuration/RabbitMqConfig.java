@@ -1,3 +1,4 @@
+/*
 package com.ald.ecanew.springbootdemosecond.Configuration;
 
 import com.rabbitmq.client.AMQP;
@@ -30,4 +31,4 @@ public class RabbitMqConfig {
         return new Queue(userQueue,true) ;//消息持久化
     }
 
-}
+}*/

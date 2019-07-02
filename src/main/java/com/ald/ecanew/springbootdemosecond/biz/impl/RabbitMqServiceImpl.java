@@ -1,3 +1,4 @@
+/*
 package com.ald.ecanew.springbootdemosecond.biz.impl;
 
 import com.ald.ecanew.springbootdemosecond.biz.ActiveMqService;
@@ -50,3 +51,4 @@ public class RabbitMqServiceImpl implements RabbitMqService,RabbitTemplate.Confi
         }
     }
 }
+*/

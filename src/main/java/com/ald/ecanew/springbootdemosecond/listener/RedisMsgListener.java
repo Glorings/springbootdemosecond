@@ -1,3 +1,4 @@
+/*
 package com.ald.ecanew.springbootdemosecond.listener;
 
 import com.ald.ecanew.springbootdemosecond.config.domain.PersonConfig;
@@ -20,4 +21,4 @@ public class RedisMsgListener implements MessageListener {
         System.out.println(new String(message.getBody()));
         System.out.println(new String(bytes));
     }
-}
+}*/

@@ -1,3 +1,4 @@
+/*
 package com.ald.ecanew.springbootdemosecond.controller;
 
 import com.ald.ecanew.springbootdemosecond.biz.ActiveMqService;
@@ -27,4 +28,4 @@ public class ActiveMqController {
         return "helloWorld222";
     }
 
-}
+}*/

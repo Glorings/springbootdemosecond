@@ -1,3 +1,4 @@
+/*
 package com.ald.ecanew.springbootdemosecond.Configuration;
 
 import org.apache.activemq.command.ActiveMQQueue;
@@ -27,4 +28,4 @@ public class ActiveMqConfig {
         return new ActiveMQTopic("sample.topic2");
     }
 
-}
+}*/

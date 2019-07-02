@@ -1,6 +1,6 @@
 package com.ald.ecanew.springbootdemosecond;
 
-import com.ald.ecanew.springbootdemosecond.listener.RedisMsgListener;
+//import com.ald.ecanew.springbootdemosecond.listener.RedisMsgListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -35,8 +35,8 @@ public class SpringbootdemosecondApplication {
     RedisTemplate redisTemplate;
     @Autowired
     RedisConnectionFactory redisConnectionFactory;
-    @Autowired
-    RedisMsgListener redisMsgListener;
+  /*  @Autowired
+    RedisMsgListener redisMsgListener;*/
     public static void main(String[] args) {
 
         SpringApplication.run(SpringbootdemosecondApplication.class, args);
@@ -67,7 +67,7 @@ public class SpringbootdemosecondApplication {
         return taskScheduler;
     }
 
-    @Bean
+    /*@Bean
     public RedisMessageListenerContainer initRedisContainer(){
         RedisMessageListenerContainer redisContainer = new RedisMessageListenerContainer();
         redisContainer.setConnectionFactory(redisConnectionFactory);
@@ -75,5 +75,5 @@ public class SpringbootdemosecondApplication {
         Topic topic = new ChannelTopic("topic");
         redisContainer.addMessageListener(redisMsgListener,topic);
         return redisContainer;
-    }
+    }*/
 }

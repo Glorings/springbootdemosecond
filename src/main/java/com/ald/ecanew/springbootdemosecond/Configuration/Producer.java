@@ -1,3 +1,4 @@
+/*
 package com.ald.ecanew.springbootdemosecond.Configuration;
 
 import org.apache.activemq.command.ActiveMQQueue;
@@ -32,4 +33,4 @@ public class Producer {
         System.out.println("生产者：辛苦生产的订阅/发布消息成果");
     }
 
-}
+}*/

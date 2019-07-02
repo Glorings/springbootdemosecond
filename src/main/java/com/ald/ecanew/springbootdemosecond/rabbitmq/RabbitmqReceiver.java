@@ -1,3 +1,4 @@
+/*
 package com.ald.ecanew.springbootdemosecond.rabbitmq;
 
 import com.ald.ecanew.springbootdemosecond.dal.domain.PersonDo;
@@ -21,4 +22,4 @@ public class RabbitmqReceiver {
     }
 
 
-}
+}*/

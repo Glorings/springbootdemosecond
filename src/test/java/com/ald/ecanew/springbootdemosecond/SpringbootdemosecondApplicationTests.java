@@ -10,7 +10,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class SpringbootdemosecondApplicationTests {
 
     @Test
-    public void contextLoads() {
+    public void test() {
+        System.out.println("111");
     }
 
 }
