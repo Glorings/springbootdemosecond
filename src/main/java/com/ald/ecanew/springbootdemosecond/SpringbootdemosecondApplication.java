@@ -10,12 +10,12 @@ import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
-import org.springframework.data.redis.connection.RedisConnectionFactory;
+/*import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.listener.ChannelTopic;
 import org.springframework.data.redis.listener.RedisMessageListenerContainer;
 import org.springframework.data.redis.listener.Topic;
-import org.springframework.data.redis.serializer.RedisSerializer;
+import org.springframework.data.redis.serializer.RedisSerializer;*/
 import org.springframework.jms.annotation.EnableJms;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
@@ -31,10 +31,10 @@ import javax.persistence.NamedEntityGraph;
 @EnableScheduling
 public class SpringbootdemosecondApplication {
 
-    @Autowired
+   /* @Autowired
     RedisTemplate redisTemplate;
     @Autowired
-    RedisConnectionFactory redisConnectionFactory;
+    RedisConnectionFactory redisConnectionFactory;*/
   /*  @Autowired
     RedisMsgListener redisMsgListener;*/
     public static void main(String[] args) {
@@ -48,17 +48,14 @@ public class SpringbootdemosecondApplication {
 
     }
 
-    @PostConstruct
+    /*@PostConstruct
     public void initRedisTemplate(){
         RedisSerializer stringSerializer = redisTemplate.getStringSerializer();
         redisTemplate.setKeySerializer(stringSerializer);
         redisTemplate.setValueSerializer(stringSerializer);
         redisTemplate.setHashKeySerializer(stringSerializer);
         redisTemplate.setHashValueSerializer(stringSerializer);
-
-
-
-    }
+    }*/
 
     @Bean
     public ThreadPoolTaskScheduler initRedisTaskScheduler(){

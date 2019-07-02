@@ -97,22 +97,22 @@
         <!--mybatis end-->
 
         <!--redis start-->
-        <dependency>
+        <!--<dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis</artifactId>
             <exclusions>
-                <!--排除默认的redis的客户端驱动lettuce-->
+                &lt;!&ndash;排除默认的redis的客户端驱动lettuce&ndash;&gt;
                 <exclusion>
                     <groupId>io.lettuce</groupId>
                     <artifactId>lettuce-core</artifactId>
                 </exclusion>
             </exclusions>
-        </dependency>
+        </dependency>-->
         <!--redis的客户端驱动jedis-->
-        <dependency>
+       <!-- <dependency>
             <groupId>redis.clients</groupId>
             <artifactId>jedis</artifactId>
-        </dependency>
+        </dependency>-->
         <!--redis end-->
 
         <!--mongodb end-->
@@ -156,11 +156,24 @@
         <!--activemq end-->
 
         <!--rabbitmq start-->
-        <dependency>
+       <!-- <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-amqp</artifactId>
-        </dependency>
+        </dependency>-->
         <!--rabbitmq end-->
+
+        <!--actuator-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.hateoas</groupId>
+            <artifactId>spring-hateoas</artifactId>
+            <version>0.25.1.RELEASE</version>
+        </dependency>
+        <!--actuator-->
     </dependencies>
 
     <build>

@@ -17,9 +17,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.dao.DataAccessException;
-import org.springframework.data.redis.connection.RedisConnection;
+/*import org.springframework.data.redis.connection.RedisConnection;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
-import org.springframework.data.redis.core.*;
+import org.springframework.data.redis.core.*;*/
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.Errors;
@@ -59,12 +59,12 @@ public class HelloWorldController{
     @Resource
     PersonDao personDao;
 
-    @Autowired
+ /*   @Autowired
     RedisTemplate redisTemplate;
     @Autowired
     StringRedisTemplate stringRedisTemplate;
     @Autowired
-    RedisConnectionFactory redisConnectionFactory;
+    RedisConnectionFactory redisConnectionFactory;*/
 
     @Autowired
     UserService userService;
@@ -138,7 +138,7 @@ public class HelloWorldController{
 
     @GetMapping("/hello7")
     public String testRedis() {
-        //String
+      /*  //String
         redisTemplate.opsForValue().set("Name","Glorings");
         Object name = redisTemplate.opsForValue().get("Name");
         stringRedisTemplate.opsForValue().set("gender","male");
@@ -194,7 +194,7 @@ public class HelloWorldController{
 
     @GetMapping("/hello8")
     public void testRedisTransation() {
-       /* redisTemplate.opsForValue().set("key1", "value1");
+       *//* redisTemplate.opsForValue().set("key1", "value1");
         List result = (List)redisTemplate.execute((RedisOperations redisOperations) -> {
             redisOperations.watch("key1");
             redisOperations.multi();
@@ -203,13 +203,14 @@ public class HelloWorldController{
             //redisOperations.opsForValue().increment("key1", 22);
             redisOperations.opsForValue().set("key3", "value3");
             return redisOperations.exec();
-        });*/
-        System.out.println("1111");
+        });*//*
+        System.out.println("1111");*/
+        return null;
     }
 
     @GetMapping("/hello9")
     public void testRedisTopic() {
-        redisTemplate.convertAndSend("topic","MSGKKKTTT");
+        //redisTemplate.convertAndSend("topic","MSGKKKTTT");
         System.out.println("'aaa'+'bb'");
     }
 
